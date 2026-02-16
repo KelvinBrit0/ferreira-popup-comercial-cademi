@@ -17,12 +17,16 @@
   }, DELAY_MS);
 
   function closePopup() {
+    // Animação de encolher pro canto
+    overlay.classList.add('shrink-to-corner');
     overlay.classList.remove('active');
     localStorage.setItem(STORAGE_KEY, '1');
-    // Mostra o botão flutuante após a animação de fechar
+
+    // Após a animação, esconde o overlay e mostra o fab
     setTimeout(function () {
+      overlay.style.display = 'none';
       fab.classList.add('visible');
-    }, 400);
+    }, 700);
   }
 
   document.getElementById('wppClose').addEventListener('click', closePopup);
