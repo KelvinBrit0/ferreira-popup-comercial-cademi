@@ -7,7 +7,7 @@
   var popupCard = overlay.querySelector('.wpp-popup');
 
   // Se já fechou antes, mostra direto o botão flutuante
-  // if (localStorage.getItem(STORAGE_KEY)) {
+  // if (sessionStorage.getItem(STORAGE_KEY)) {
   //   fab.classList.add('visible');
   //   return;
   // }
@@ -40,7 +40,7 @@
     overlay.classList.add('closing');
     overlay.classList.remove('active');
 
-    localStorage.setItem(STORAGE_KEY, '1');
+    sessionStorage.setItem(STORAGE_KEY, '1');
 
     // Após a animação, esconde o overlay e mostra o fab
     setTimeout(function () {
@@ -62,8 +62,8 @@
     if (e.key === 'Escape') closePopup();
   });
 
-  // Salva no localStorage ao clicar no CTA
+  // Salva no sessionStorage ao clicar no CTA
   document.getElementById('wppCta').addEventListener('click', function () {
-    localStorage.setItem(STORAGE_KEY, '1');
+    sessionStorage.setItem(STORAGE_KEY, '1');
   });
 })();
