@@ -91,14 +91,14 @@
     popupCard.style.opacity = '0';
     popupCard.style.borderRadius = '50%';
 
-    // Faz o fundo sumir
+    // Faz o fundo sumir mas mantém overlay visível durante a animação
     overlay.classList.add('closing');
-    overlay.classList.remove('active');
 
     sessionStorage.setItem(STORAGE_KEY, '1');
 
-    // Após a animação, esconde o overlay e mostra o fab
+    // Após a animação, esconde tudo e mostra o fab
     setTimeout(function () {
+      overlay.classList.remove('active');
       overlay.style.display = 'none';
       fab.classList.add('visible');
     }, 700);
