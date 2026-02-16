@@ -66,9 +66,16 @@
   }, DELAY_MS);
 
   function closePopup() {
-    // Calcula posição real do FAB e do popup
+    // Torna o FAB mensurável temporariamente (scale(0) zera o rect)
+    fab.style.transition = 'none';
+    fab.style.transform = 'scale(1)';
+
     var fabRect = fab.getBoundingClientRect();
     var popupRect = popupCard.getBoundingClientRect();
+
+    // Restaura o FAB ao estado oculto
+    fab.style.transform = '';
+    fab.style.transition = '';
 
     var fabCenterX = fabRect.left + fabRect.width / 2;
     var fabCenterY = fabRect.top + fabRect.height / 2;
