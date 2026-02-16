@@ -4,6 +4,7 @@
 
   var overlay = document.getElementById('wppPopup');
   var fab = document.getElementById('wppFab');
+  var popupCard = overlay.querySelector('.wpp-popup');
 
   // Se já fechou antes, mostra direto o botão flutuante
   // if (localStorage.getItem(STORAGE_KEY)) {
@@ -17,9 +18,28 @@
   }, DELAY_MS);
 
   function closePopup() {
-    // Animação de encolher pro canto
-    overlay.classList.add('shrink-to-corner');
+    // Calcula posição real do FAB e do popup
+    var fabRect = fab.getBoundingClientRect();
+    var popupRect = popupCard.getBoundingClientRect();
+
+    var fabCenterX = fabRect.left + fabRect.width / 2;
+    var fabCenterY = fabRect.top + fabRect.height / 2;
+    var popupCenterX = popupRect.left + popupRect.width / 2;
+    var popupCenterY = popupRect.top + popupRect.height / 2;
+
+    var dx = fabCenterX - popupCenterX;
+    var dy = fabCenterY - popupCenterY;
+
+    // Anima o popup em direção ao FAB
+    popupCard.style.transition = 'transform 0.65s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease 0.45s, border-radius 0.4s ease';
+    popupCard.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(0.05)';
+    popupCard.style.opacity = '0';
+    popupCard.style.borderRadius = '50%';
+
+    // Faz o fundo sumir
+    overlay.classList.add('closing');
     overlay.classList.remove('active');
+
     localStorage.setItem(STORAGE_KEY, '1');
 
     // Após a animação, esconde o overlay e mostra o fab
