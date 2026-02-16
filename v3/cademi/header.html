@@ -226,6 +226,36 @@
   fill: #fff;
 }
 
+/* ===== FAB LABEL ===== */
+.wpp-fab-label {
+  position: fixed;
+  bottom: 36px;
+  right: 92px;
+  background: #111318;
+  border: 1px solid rgba(0, 224, 255, 0.15);
+  color: #fff;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  white-space: nowrap;
+  z-index: 99997;
+  opacity: 0;
+  transform: translateX(20px);
+  pointer-events: none;
+}
+
+.wpp-fab.visible ~ .wpp-fab-label {
+  animation: fab-label-slide 5s ease-in-out 1s infinite;
+}
+
+@keyframes fab-label-slide {
+  0%, 100% { opacity: 0; transform: translateX(20px); }
+  12%, 60% { opacity: 1; transform: translateX(0); }
+  75% { opacity: 0; transform: translateX(20px); }
+}
+
 /* ===== MOBILE ===== */
 @media (max-width: 480px) {
   .wpp-popup {
@@ -278,6 +308,13 @@
   .wpp-fab svg {
     width: 28px;
     height: 28px;
+  }
+
+  .wpp-fab-label {
+    bottom: 25px;
+    right: 78px;
+    font-size: 12px;
+    padding: 6px 12px;
   }
 }
 </style>
