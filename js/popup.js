@@ -6,10 +6,10 @@
   var fab = document.getElementById('wppFab');
 
   // Se já fechou antes, mostra direto o botão flutuante
-  if (localStorage.getItem(STORAGE_KEY)) {
-    fab.classList.add('visible');
-    return;
-  }
+  // if (localStorage.getItem(STORAGE_KEY)) {
+  //   fab.classList.add('visible');
+  //   return;
+  // }
 
   // Mostra o popup após o delay
   setTimeout(function () {
